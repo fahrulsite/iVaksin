@@ -45,53 +45,62 @@ class _AdminVaksinViewState extends State<AdminVaksinView> {
                   var data = snapshot.data[index];
                   return InkWell(
                     onTap: ()=>Get.to(EditVaksinView(data: data,)),
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      height: 100,
-                      width: MediaQuery.of(context).size.width * 0.95,
-                      child: Card(
-                        child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Stack(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: 20,),
-                                    Row(
-                                      children: [
-                                        Text("tes1", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
-                                      ],
+                    child: Card(
+                      child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Stack(
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: (data.kouta != "0" )? Colors.blue : Colors.red,
+                                      borderRadius: BorderRadius.circular(120),
                                     ),
-
-
-                                  ],
-                                ),
-                                Positioned(
-                                  right: 0,
-                                  bottom: 0,
-                                  child: Container(
-                                    margin: EdgeInsets.only(left: 20),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-
-                                        Text("+"+"tes2", style: TextStyle(fontSize: 20, color: Colors.green),),
-                                        SizedBox(height: 10,),
-                                        Row(
-                                          children: [
-                                            Icon(Icons.date_range, size: 20,),
-                                            SizedBox(width: 10,),
-                                            Text(data.tanggal, style: TextStyle(fontSize: 13),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                                    child: Center(child: Text(data.kouta, style: TextStyle(color: Colors.white, fontSize: 20),)),
                                   ),
-                                )
-                              ],
-                            )
-                        ),
+                                  SizedBox(width: 15,),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(data.nama, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.location_on_outlined, size: 15, color: Colors.red,),
+                                          Text(data.alamat, style: TextStyle(fontSize: 15, )),
+
+                                        ],
+                                      )
+
+                                    ],
+                                  )
+                                ],
+                              ),
+                              Positioned(
+                                right: 0,
+                                bottom: 0,
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 20),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      SizedBox(height: 10,),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.date_range, size: 15,),
+                                          SizedBox(width: 7,),
+                                          Text(data.tanggal, style: TextStyle(fontSize: 10),),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
                       ),
                     ),
                   );

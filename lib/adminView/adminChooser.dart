@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:interma/adminView/donasi/adminVaksinView.dart';
+import 'package:interma/splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminChooser extends StatefulWidget {
@@ -132,34 +133,16 @@ class _AdminChooserState extends State<AdminChooser> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
-                              // onTap: ()=>Get.to(AdminDonaturView()),
-                              child: Container(
-                                height: 130,
-                                width: MediaQuery.of(context).size.width * 0.4,
-                                child: Card(
-                                  color: Colors.white,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.people_alt_rounded, color: Colors.black),
-                                      SizedBox(height: 20,),
-                                      Text("Donatur")
-                                    ],
-                                  ),),
-                              ),
-                            ),
-
-                            InkWell(
                               onTap: ()=> Get.to(AdminVaksinView()),
                               child: Container(
                                 height: 130,
-                                width: MediaQuery.of(context).size.width * 0.4,
+                                width: MediaQuery.of(context).size.width * 0.8,
                                 child: Card(
-                                  color: Colors.white,
+                                  color: Colors.blue,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Image.asset('assets/image/donasi.png', height: 30,),
+                                      Icon(Icons.local_hospital, color: Colors.white, size: 20,),
                                       SizedBox(height: 20,),
                                       Text("Donasi")
                                     ],
@@ -168,46 +151,6 @@ class _AdminChooserState extends State<AdminChooser> {
                             ),
 
 
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              // onTap: ()=>Get.to(AdminPenerimaView()),
-                              child: Container(
-                                height: 130,
-                                width: MediaQuery.of(context).size.width * 0.4,
-                                child: Card(
-                                  color: Colors.white,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.people_alt_rounded, color: Colors.black),
-                                      SizedBox(height: 20,),
-                                      Text("Penerima")
-                                    ],
-                                  ),),
-                              ),
-                            ),
-
-                            InkWell(
-                              // onTap: ()=>Get.to(AdminPenyaluranView()),
-                              child: Container(
-                                height: 130,
-                                width: MediaQuery.of(context).size.width * 0.4,
-                                child: Card(
-                                  color: Colors.white,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset('assets/image/penyaluran.png', height: 30,),
-                                      SizedBox(height: 20,),
-                                      Text("Penyaluran")
-                                    ],
-                                  ),),
-                              ),
-                            ),
                           ],
                         ),
 
@@ -225,7 +168,7 @@ class _AdminChooserState extends State<AdminChooser> {
                                       child: Text("No")),
                                   FlatButton(onPressed:(){
                                     signOut();
-                                    SystemNavigator.pop();
+                                    Get.offAll(SplashScreen());
                                   },
                                       child: Text("Yes")),
                                 ],

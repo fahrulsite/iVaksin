@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:interma/adminView/adminChooser.dart';
@@ -67,11 +66,6 @@ class _AdminLoginState extends State<AdminLogin> {
       preferences.commit();
     });
   }
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {

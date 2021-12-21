@@ -61,7 +61,7 @@ class _ChooserState extends State<Chooser> {
                   Center(child: Column(
                     children: [
                       SizedBox(height: 100,),
-                      Text('Interma', style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.w400),),
+                      Text('iVaksin', style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.w400),),
                     ],
                   )),
               ]),

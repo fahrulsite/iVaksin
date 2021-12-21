@@ -51,131 +51,202 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    TextEditingController jumlah = new TextEditingController();
-    TextEditingController tanggal = new TextEditingController();
+    TextEditingController _nama = new TextEditingController();
+    TextEditingController _alamat = new TextEditingController();
+    TextEditingController _kota = new TextEditingController();
+    TextEditingController _kouta = new TextEditingController();
+    TextEditingController _telp = new TextEditingController();
+    TextEditingController _location = new TextEditingController();
+    TextEditingController _tanggal = new TextEditingController();
 
     return Scaffold(
         appBar: AppBarTitle(
-          nama: "Tambah Donasi",
+          nama: "Tambah Data",
           preferredSize: Size.fromHeight(140),
         ),
-        body: InkWell(
-          onTap: null,
-          child: Container(
-            margin: EdgeInsets.all(16),
-            child: Form(
-              key: formKey,
-              child: ListView(
-                children: [
-                  Container(
+        body: Container(
+          margin: EdgeInsets.all(16),
+          child: Form(
+            key: formKey,
+            child: ListView(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Nama",
+                      labelText: "Nama"
+                  ),
+                  validator: (e) {
+                    if (e.isEmpty) {
+                      return 'Nama';
+                    }
+                    ;
+                  },
+                  controller: _nama,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Alamat",
+                      labelText: "Alamat"
+                  ),
+                  validator: (e) {
+                    if (e.isEmpty) {
+                      return 'Alamat';
+                    }
+                    ;
+                  },
+                  controller: _alamat,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black26),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Stack(
+                        children: [
+                          Text('Nama'),
+
+                          DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              value: id,
+                              hint: Text("Pilih Nama Donatur"),
+                              items: data.map((item) {
+                                return DropdownMenuItem(
+                                  child: Text(item["nama"]),
+                                  value: item["id_donatur"].toString(),
+                                );
+                              }).toList(),
+                              onChanged: (String newVal) {
+                                setState(() {
+                                  id = newVal;
+                                  print(id.toString());
+                                });
+                              },
+                            ),
+                          ),]
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Kouta",
+                      labelText: "Kouta"
+                  ),
+                  validator: (e) {
+                    if (e.isEmpty) {
+                      return 'Kouta';
+                    }
+                    ;
+                  },
+                  controller: _kouta,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Kontak",
+                      labelText: "Kontak"
+                  ),
+                  validator: (e) {
+                    if (e.isEmpty) {
+                      return 'Kontak';
+                    }
+                    ;
+                  },
+                  controller: _telp,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Lokasi",
+                      labelText: "Lokasi"
+                  ),
+                  validator: (e) {
+                    if (e.isEmpty) {
+                      return 'Lokasi';
+                    }
+                    ;
+                  },
+                  controller: _location,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+
+                InkWell(
+                  onTap: (){
+                    _selectDate(context);
+                  },
+                  child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black26),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Stack(
-                        children: [
-                          Text('Nama'),
-
-                          DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            value: id,
-                            hint: Text("Pilih Nama Donatur"),
-                            items: data.map((item) {
-                              return DropdownMenuItem(
-                                child: Text(item["nama"]),
-                                value: item["id_donatur"].toString(),
-                              );
-                            }).toList(),
-                            onChanged: (String newVal) {
-                              setState(() {
-                                id = newVal;
-                                print(id.toString());
-                              });
-                            },
-                          ),
-                        ),]
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  InkWell(
-                    onTap: (){
-                      _selectDate(context);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black26),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
+                      child: Row(
                           children: [
                             Icon(Icons.date_range),
                             SizedBox( width: 20,),
                             Text(
-                              _selectedDate,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: Color(0xFF000000))
-                          ),]
-                        ),
+                                _selectedDate,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Color(0xFF000000))
+                            ),]
                       ),
-
                     ),
-                  ),
 
-                  SizedBox(
-                    height: 20,
                   ),
+                ),
 
-                  TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Jumlah",
-                        labelText: "Masukkan Jumlah"
+                SizedBox(
+                  height: 20,
+                ),
+
+
+
+                InkWell(
+                  onTap: ()=>ApiService.createVaksin(nama: _nama.text, alamat: _alamat.text, kota: _kota
+                      .text, kouta: _kouta.text, telp: _telp.text, location: _location.text, tanggal: date ).then((value) => {
+                    Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
+                  })..whenComplete(() => Get.back()),
+                  child: Container(
+                    margin: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Color(0xff61D2C4),
                     ),
-                    validator: (e) {
-                      if (e.isEmpty) {
-                        return 'Jumlah tidak boleh kosong';
-                      }
-                      ;
-                    },
-                    controller: jumlah,
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
-
-
-                  InkWell(
-                    // onTap: ()=>ApiService.createVaksin(id_donatur:id, jumlah: jumlah.text,tanggal: _selectedDate).then((value) => {
-                    //   Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
-                    // })..whenComplete(() => Get.back()),
-                    child: Container(
-                      margin: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Color(0xff61D2C4),
+                    height: 60,
+                    child: Center(
+                      child: Text(
+                        "SIMPAN", style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      height: 60,
-                      child: Center(
-                        child: Text(
-                          "SIMPAN", style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ),
-
                     ),
-                  )
-                ],
-              ),
+
+                  ),
+                )
+              ],
             ),
           ),
         )

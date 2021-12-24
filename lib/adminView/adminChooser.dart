@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:interma/adminView/donasi/adminVaksinView.dart';
+import 'package:interma/adminView/vaksin/adminVaksinView.dart';
 import 'package:interma/splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -144,7 +144,7 @@ class _AdminChooserState extends State<AdminChooser> {
                                     children: [
                                       Icon(Icons.local_hospital, color: Colors.white, size: 20,),
                                       SizedBox(height: 20,),
-                                      Text("Donasi")
+                                      Text("Tempat Vaksin", style: TextStyle(color: Colors.white),)
                                     ],
                                   ),),
                               ),

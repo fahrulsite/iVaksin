@@ -15,14 +15,6 @@ class VaksinViewUser extends StatefulWidget {
 class _VaksinViewUserState extends State<VaksinViewUser> {
   List data = List();
 
-  Future getAllNama() async{
-    var res = await http.get(Uri.parse("https://ivaksin.herokuapp.com/donatur"));
-    var resBody = json.decode(res.body);
-    setState(() {
-      data = resBody;
-    });
-  }
-
   @override
   void initState() {
     super.initState();

@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:interma/adminView/donasi/editVaksinView.dart';
-import 'package:interma/adminView/donasi/tambahVaksinView.dart';
+import 'package:interma/adminView/vaksin/tambahVaksinView.dart';
 import 'package:interma/model/vaksin.dart';
 import 'package:interma/service/apiService.dart';
 import 'package:interma/viewUser/appBarTitle.dart';
 import 'package:http/http.dart' as http;
+
+import 'editVaksinView.dart';
 
 class AdminVaksinView extends StatefulWidget {
   @override

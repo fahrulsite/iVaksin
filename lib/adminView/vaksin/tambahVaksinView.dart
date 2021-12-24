@@ -17,14 +17,14 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
   String id;
   String date;
   List data = List();
-
-  Future getAllNama() async{
-    var res = await http.get(Uri.parse("https://ivaksin.herokuapp.com/donatur"));
-    var resBody = json.decode(res.body);
-    setState(() {
-      data = resBody;
-    });
-  }
+  //
+  // Future getAllNama() async{
+  //   var res = await http.get(Uri.parse("https://ivaksin.herokuapp.com/donatur"));
+  //   var resBody = json.decode(res.body);
+  //   setState(() {
+  //     data = resBody;
+  //   });
+  // }
 
   String _selectedDate = 'Tap to select date';
 
@@ -32,7 +32,7 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
     final DateTime d = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(DateTime.now().year - 3),
+      firstDate: DateTime(DateTime.now().year -40),
       lastDate: DateTime(DateTime.now().year +3),
     );
     if (d != null)
@@ -45,7 +45,7 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getAllNama();
+    // getAllNama();
   }
 
   @override
@@ -53,7 +53,7 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
     final formKey = GlobalKey<FormState>();
     TextEditingController _nama = new TextEditingController();
     TextEditingController _alamat = new TextEditingController();
-    TextEditingController _kota = new TextEditingController();
+    // TextEditingController _kota = new TextEditingController();
     TextEditingController _kouta = new TextEditingController();
     TextEditingController _telp = new TextEditingController();
     TextEditingController _location = new TextEditingController();
@@ -70,6 +70,40 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
             key: formKey,
             child: ListView(
               children: [
+                InkWell(
+                  onTap: (){
+                    _selectDate(context);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 8, left: 8, right: 8),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black26),
+                      borderRadius: BorderRadius.circular(4),
+                      color: Color(0xffF1F4FA),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                                _selectedDate,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Color(0xFF000000))
+                            ),
+                            SizedBox( width: 20,),
+                            Icon(Icons.date_range),]
+                      ),
+                    ),
+
+                  ),
+                ),
+
+                SizedBox(
+                  height: 20,
+                ),
+
+
                 TextFormField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -105,38 +139,38 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Stack(
-                        children: [
-                          Text('Nama'),
-
-                          DropdownButtonHideUnderline(
-                            child: DropdownButton(
-                              value: id,
-                              hint: Text("Pilih Nama Donatur"),
-                              items: data.map((item) {
-                                return DropdownMenuItem(
-                                  child: Text(item["nama"]),
-                                  value: item["id_donatur"].toString(),
-                                );
-                              }).toList(),
-                              onChanged: (String newVal) {
-                                setState(() {
-                                  id = newVal;
-                                  print(id.toString());
-                                });
-                              },
-                            ),
-                          ),]
-                    ),
-                  ),
-                ),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     border: Border.all(color: Colors.black26),
+                //     borderRadius: BorderRadius.circular(8),
+                //   ),
+                //   child: Padding(
+                //     padding: const EdgeInsets.all(8.0),
+                //     child: Stack(
+                //         children: [
+                //           Text('Nama'),
+                //
+                //           DropdownButtonHideUnderline(
+                //             child: DropdownButton(
+                //               value: id,
+                //               hint: Text("Pilih Nama Donatur"),
+                //               items: data.map((item) {
+                //                 return DropdownMenuItem(
+                //                   child: Text(item["nama"]),
+                //                   value: item["id_donatur"].toString(),
+                //                 );
+                //               }).toList(),
+                //               onChanged: (String newVal) {
+                //                 setState(() {
+                //                   id = newVal;
+                //                   print(id.toString());
+                //                 });
+                //               },
+                //             ),
+                //           ),]
+                //     ),
+                //   ),
+                // ),
 
                 SizedBox(
                   height: 20,
@@ -194,43 +228,12 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
                   height: 20,
                 ),
 
-                InkWell(
-                  onTap: (){
-                    _selectDate(context);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black26),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                          children: [
-                            Icon(Icons.date_range),
-                            SizedBox( width: 20,),
-                            Text(
-                                _selectedDate,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(color: Color(0xFF000000))
-                            ),]
-                      ),
-                    ),
-
-                  ),
-                ),
-
-                SizedBox(
-                  height: 20,
-                ),
-
 
 
                 InkWell(
-                  onTap: ()=>ApiService.createVaksin(nama: _nama.text, alamat: _alamat.text, kota: _kota
-                      .text, kouta: _kouta.text, telp: _telp.text, location: _location.text, tanggal: date ).then((value) => {
+                  onTap: ()=>ApiService.createVaksin(nama: _nama.text, alamat: _alamat.text, kota: "" , kouta: _kouta.text, telp: _telp.text, location: _location.text, tanggal: _selectedDate.toString() ).then((value) => {
                     Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
-                  })..whenComplete(() => Get.back()),
+                  }).whenComplete(() => Get.back()),
                   child: Container(
                     margin: EdgeInsets.all(16),
                     decoration: BoxDecoration(

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -19,18 +17,20 @@ class EditVaksinView extends StatefulWidget {
 }
 
 class _EditVaksinViewState extends State<EditVaksinView> {
-
+  final formKey = GlobalKey<FormState>();
   String id;
   String date;
   List data = List();
 
-  Future getAllNama() async{
-    var res = await http.get(Uri.parse("https://ivaksin.herokuapp.com/vaksin"));
-    var resBody = json.decode(res.body);
-    setState(() {
-      data = resBody;
-    });
-  }
+
+
+  // Future getAllNama() async{
+  //   var res = await http.get(Uri.parse("https://ivaksin.herokuapp.com/donatur"));
+  //   var resBody = json.decode(res.body);
+  //   setState(() {
+  //     data = resBody;
+  //   });
+  // }
 
   String _selectedDate;
 
@@ -38,7 +38,7 @@ class _EditVaksinViewState extends State<EditVaksinView> {
     final DateTime d = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(DateTime.now().year - 3),
+      firstDate: DateTime(DateTime.now().year - 50),
       lastDate: DateTime(DateTime.now().year +3),
     );
     if (d != null)
@@ -53,13 +53,18 @@ class _EditVaksinViewState extends State<EditVaksinView> {
     super.initState();
     id = widget.data.idVaksin.toString();
     _selectedDate = widget.data.tanggal.toString();
-    getAllNama();
+    // getAllNama();
   }
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    TextEditingController jumlah = new TextEditingController(text: widget.data.kouta.toString());
+    TextEditingController nama = new TextEditingController(text: widget.data.nama);
+    TextEditingController _alamat = new TextEditingController(text: widget.data.alamat);
+    TextEditingController _kouta = new TextEditingController(text: widget.data.kouta);
+    TextEditingController _telp = new TextEditingController(text: widget.data.telp);
+    TextEditingController _location = new TextEditingController(text: widget.data.location);
+    TextEditingController _tanggal = new TextEditingController(text: widget.data.tanggal);
 
     return Scaffold(
         appBar: AppBarTitle(
@@ -74,43 +79,6 @@ class _EditVaksinViewState extends State<EditVaksinView> {
               key: formKey,
               child: ListView(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black26),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Stack(
-                          children: [
-                            Text('Nama'),
-
-                            // DropdownButtonHideUnderline(
-                            //   child: DropdownButton(
-                            //     value: id,
-                            //     hint: Text("Pilih Nama Donatur"),
-                            //     items: data.map((item) {
-                            //       return DropdownMenuItem(
-                            //         child: Text(item["nama"]),
-                            //         value: item["id_donatur"].toString(),
-                            //       );
-                            //     }).toList(),
-                            //     onChanged: (String newVal) {
-                            //       setState(() {
-                            //         id = newVal;
-                            //         print(id.toString());
-                            //       });
-                            //     },
-                            //   ),
-                            // ),]
-                      ]),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: 20,
-                  ),
-
                   InkWell(
                     onTap: (){
                       _selectDate(context);
@@ -144,18 +112,91 @@ class _EditVaksinViewState extends State<EditVaksinView> {
                   TextFormField(
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "Jumlah",
-                        labelText: "Masukkan Jumlah"
+                        hintText: "Nama",
+                        labelText: "Nama"
                     ),
                     validator: (e) {
                       if (e.isEmpty) {
-                        return 'Jumlah tidak boleh kosong';
+                        return 'Nama';
                       }
                       ;
                     },
-                    controller: jumlah,
+                    controller: nama,
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
 
+                  TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Alamat",
+                        labelText: "Alamat"
+                    ),
+                    validator: (e) {
+                      if (e.isEmpty) {
+                        return 'Alamat';
+                      }
+                      ;
+                    },
+                    controller: _alamat,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Kouta",
+                        labelText: "Kouta"
+                    ),
+                    validator: (e) {
+                      if (e.isEmpty) {
+                        return 'Kouta';
+                      }
+                      ;
+                    },
+                    controller: _kouta,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Kontak",
+                        labelText: "Kontak"
+                    ),
+                    validator: (e) {
+                      if (e.isEmpty) {
+                        return 'Kontak';
+                      }
+                      ;
+                    },
+                    controller: _telp,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Lokasi",
+                        labelText: "Lokasi"
+                    ),
+                    validator: (e) {
+                      if (e.isEmpty) {
+                        return 'Lokasi';
+                      }
+                      ;
+                    },
+                    controller: _location,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
@@ -201,9 +242,9 @@ class _EditVaksinViewState extends State<EditVaksinView> {
                       ),
 
                       InkWell(
-                        // onTap: ()=>ApiService.editVaksin(id: widget.data.idVaksin.toString() ,id_donatur:id, jumlah: jumlah.text,tanggal: _selectedDate).then((value) => {
-                        //   Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
-                        // })..whenComplete(() => Get.back()),
+                        onTap: ()=>ApiService.editVaksin(id: widget.data.idVaksin.toString() , nama:nama.text, kouta: _kouta.text, telp: _telp.text,location: _location.text, tanggal: _selectedDate, kota: " ", alamat: _alamat.text ).then((value) => {
+                          Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
+                        }).whenComplete(() => Get.back()),
                         child: Container(
                           width: 100,
                           decoration: BoxDecoration(

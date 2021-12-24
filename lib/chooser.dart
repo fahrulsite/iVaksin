@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:interma/adminView/adminLogin.dart';
+import 'package:interma/viewUser/bedViewUser.dart';
 import 'package:interma/viewUser/vaksinViewUser.dart';
 class Chooser extends StatefulWidget {
   @override
@@ -85,7 +86,7 @@ class _ChooserState extends State<Chooser> {
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             InkWell(
-              // onTap: ()=>Get.to(VaksinViewUser()),
+              onTap: ()=>Get.to(BedViewUser()),
               child: Container(
                 height: 150,
                 width: MediaQuery.of(context).size.width * 0.3,
@@ -95,9 +96,10 @@ class _ChooserState extends State<Chooser> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset('assets/image/donasi.png', height: 30,),
+                      // Image.asset('assets/image/vaksin.png', height: 30,),
+                      Icon(Icons.local_hospital_rounded),
                       SizedBox(height: 20,),
-                      Text("Ketersediaan Tempat Tidur")
+                      Text("Ketersediaan RS")
                     ],
                 ),),
               ),

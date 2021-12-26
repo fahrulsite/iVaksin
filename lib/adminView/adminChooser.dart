@@ -82,7 +82,7 @@ class _AdminChooserState extends State<AdminChooser> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Halo!!', style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 25),),
-                            Text('Selamat Datang Di Interma', style: GoogleFonts.aldrich(color: Colors.white, fontSize: 15),),
+                            Text('Selamat Datang Di iVaksin', style: GoogleFonts.aldrich(color: Colors.white, fontSize: 15),),
                           ],
                         )),
 

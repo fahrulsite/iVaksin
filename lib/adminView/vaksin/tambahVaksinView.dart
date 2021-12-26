@@ -213,8 +213,8 @@ class _TambahVaksinViewState extends State<TambahVaksinView> {
                 TextFormField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: "Lokasi",
-                      labelText: "Lokasi"
+                      hintText: "Link Maps",
+                      labelText: "Link Maps"
                   ),
                   validator: (e) {
                     if (e.isEmpty) {

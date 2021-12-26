@@ -242,9 +242,11 @@ class _EditVaksinViewState extends State<EditVaksinView> {
                       ),
 
                       InkWell(
-                        onTap: ()=>ApiService.editVaksin(id: widget.data.idVaksin.toString() , nama:nama.text, kouta: _kouta.text, telp: _telp.text,location: _location.text, tanggal: _selectedDate, kota: " ", alamat: _alamat.text ).then((value) => {
-                          Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
-                        }).whenComplete(() => Get.back()),
+                        onTap: (){
+                          ApiService.editVaksin(id: widget.data.idVaksin.toString() , nama:nama.text, kouta: _kouta.text, telp: _telp.text,location: _location.text, tanggal: _selectedDate, kota: " ", alamat: _alamat.text ).then((value) => {
+                            Toast.show("Berhasil", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM),
+                          }).whenComplete(() => Get.back(result: 'success'));
+                        },
                         child: Container(
                           width: 100,
                           decoration: BoxDecoration(

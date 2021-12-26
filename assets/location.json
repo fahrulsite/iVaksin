@@ -1,0 +1,142 @@
+[
+  {
+    "value": "",
+    "name": "Pilih Lokasi"
+  },
+  {
+    "value": "sumatera_utara",
+    "name": "Sumatera Utara"
+  },
+  {
+    "value": "sumatera_barat",
+    "name": "Sumatera Barat"
+  },
+  {
+    "value": "riau",
+    "name": "Riau"
+  },
+  {
+    "value": "jambi",
+    "name": "Jambi"
+  },
+  {
+    "value": "sumatera_selatan",
+    "name": "Sumatera Selatan"
+  },
+  {
+    "value": "bengkulu",
+    "name": "Bengkulu"
+  },
+  {
+    "value": "lampung",
+    "name": "Lampung"
+  },
+  {
+    "value": "kepulauan_bangka_belitung",
+    "name": "Kepulauan Bangka Belitung"
+  },
+  {
+    "value": "kepulauan_riau",
+    "name": "Kepulauan Riau"
+  },
+  {
+    "value": "jakarta",
+    "name": "Jakarta"
+  },
+  {
+    "value": "jawa_barat",
+    "name": "Jawa Barat"
+  },
+  {
+    "value": "jawa_tengah",
+    "name": "Jawa Tengah"
+  },
+  {
+    "value": "yogyakarta",
+    "name": "Yogyakarta"
+  },
+  {
+    "value": "jawa_timur",
+    "name": "Jawa Timur"
+  },
+  {
+    "value": "banten",
+    "name": "Banten"
+  },
+  {
+    "value": "bali",
+    "name": "Bali"
+  },
+  {
+    "value": "nusa_tenggara_barat",
+    "name": "Nusa Tenggara Barat"
+  },
+  {
+    "value": "nusa_tenggara_timur",
+    "name": "Nusa Tenggara Timur"
+  },
+  {
+    "value": "kalimantan_barat",
+    "name": "Kalimantan Barat"
+  },
+  {
+    "value": "kalimantan_tengah",
+    "name": "Kalimantan Tengah"
+  },
+  {
+    "value": "kalimantan_selatan",
+    "name": "Kalimantan Selatan"
+  },
+  {
+    "value": "kalimantan_timur",
+    "name": "Kalimantan Timur"
+  },
+  {
+    "value": "kalimantan_utara",
+    "name": "Kalimantan Utara"
+  },
+  {
+    "value": "sulawesi_utara",
+    "name": "Sulawesi Utara"
+  },
+  {
+    "value": "sulawesi_tengah",
+    "name": "Sulawesi Tengah"
+  },
+  {
+    "value": "sulawesi_selatan",
+    "name": "Sulawesi Selatan"
+  },
+  {
+    "value": "sulawesi_tenggara",
+    "name": "Sulawesi Tenggara"
+  },
+  {
+    "value": "sulawesi_selatan",
+    "name": "Sulawesi Selatan"
+  },
+  {
+    "value": "gorontalo",
+    "name": "Gorontalo"
+  },
+  {
+    "value": "sulawesi_barat",
+    "name": "Sulawesi Barat"
+  },
+  {
+    "value": "maluku",
+    "name": "Maluku"
+  },
+  {
+    "value": "maluku_utara",
+    "name": "Maluku Utara"
+  },
+  {
+    "value": "papua_barat",
+    "name": "Papua Barat"
+  },
+  {
+    "value": "papua",
+    "name": "Papua"
+  }
+]

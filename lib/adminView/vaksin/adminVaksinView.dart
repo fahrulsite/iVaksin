@@ -16,8 +16,12 @@ class AdminVaksinView extends StatefulWidget {
 }
 
 class _AdminVaksinViewState extends State<AdminVaksinView> {
-
-
+  _getRequests() async{}
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,14 @@ class _AdminVaksinViewState extends State<AdminVaksinView> {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: ()=>Get.to(TambahVaksinView()),
+          onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>new TambahVaksinView()),)
+                .then((_){
+              setState(() {
+
+              });
+            });
+          },
           backgroundColor: Color(0xff61D2C4),
         ),
 
@@ -45,7 +56,14 @@ class _AdminVaksinViewState extends State<AdminVaksinView> {
                 itemBuilder: (BuildContext context, int index){
                   var data = snapshot.data[index];
                   return InkWell(
-                    onTap: ()=>Get.to(EditVaksinView(data: data,)),
+                    onTap: (){
+                      Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>new EditVaksinView(data: data,)),)
+                          .then((_){
+                            setState(() {
+
+                            });
+                      });
+                    },
                     child: Card(
                       child: Padding(
                           padding: const EdgeInsets.all(15),

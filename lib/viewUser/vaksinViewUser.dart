@@ -23,17 +23,12 @@ class _VaksinViewUserState extends State<VaksinViewUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBarTitle2(
-      //   nama: "Data Donasi",
-      //   preferredSize: Size.fromHeight(140),
-      // ),
-
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(160),
+        preferredSize: Size.fromHeight(120),
         child: Column(
           children: [
             Container(
-              height: 160,
+              height: 120,
               width: double.infinity,
               child: Stack(
                   children: [
@@ -95,24 +90,13 @@ class _VaksinViewUserState extends State<VaksinViewUser> {
                     ),
 
                     Positioned(
-                      top: 120,
-                      left: 20,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width*0.90,
-                        height: 50,
-                        color: Colors.blue,
-                        child: Text("oke"),
-                      ),
-                    ),
-
-                    Positioned(
                         top: -50,
                         left: 120,
                         // margin: EdgeInsets.only(left: 50),
                         child: Column(
                           children: [
                             SizedBox(height: 100,),
-                            Text("Data Donasi", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w400),),
+                            Text("Data Vaksinasi", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w400),),
                           ],
                         )),
                   ]),
@@ -130,21 +114,7 @@ class _VaksinViewUserState extends State<VaksinViewUser> {
           ],
         ),
       ),
-      // appBar: AppBar(
-      //   title: Text("Info Vaksinasi"),
-      //   bottom: PreferredSize(
-      //     preferredSize: const Size.fromHeight(60.0),
-      //     child: new Padding(
-      //       padding: new EdgeInsets.only(
-      //         bottom: 10.0,
-      //         left: 10.0,
-      //         right: 10.0,
-      //       ),
-      //       child: Text("oke"),
-      //     ),
-      //   ),
-      //   backgroundColor:Color(0xff29D890) ,
-      // ),
+
       body: FutureBuilder<List<Vaksin>>(
         future: ApiService.getListVaksin(),
         builder: (context, snapshot){

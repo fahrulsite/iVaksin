@@ -4,13 +4,14 @@ import 'package:interma/model/vaksin.dart';
 import 'package:http/http.dart' as http;
 class ApiService{
   static final _URL_VAKSIN = Uri.parse("https://ivaksin.herokuapp.com/vaksin");
-  static final _URL_BED = Uri.parse("https://bed.ina-covid.com/api/bed?prov=aceh");
 
 //=======================GET============================
   static Future<List<Vaksin>> getListVaksin() async {
+
     final response = await http.get(_URL_VAKSIN); //data json
     if (response.statusCode == 200) {
-      final items = jsonDecode(response.body).cast<Map<String, dynamic>>();;
+      final items = jsonDecode(response.body).cast<Map<String, dynamic>>();
+      print(response.body+" responbody-vaksin");
       List<Vaksin> listVaksin = items.map<Vaksin>((json) {
         return Vaksin.fromJson(json);
       }).toList();
@@ -21,15 +22,24 @@ class ApiService{
     }
   }
 
-  static Future<List<Data>> getListBed() async {
+  static Future<List<Data>> getListBed(String req) async {
+    final _URL_BED = Uri.parse("https://bed.ina-covid.com/api/bed?prov=${req}");
     final response = await http.get(_URL_BED); //data json
+    // print(response.body+" responbody");
     if (response.statusCode == 200) {
-      final items = jsonDecode(response.body).cast<Map<String, dynamic>>();
-      List<Data> listBed = items.map<Data>((json) {
-        return Data.fromJson(json);
-      }).toList();
-      print(listBed);
-      return listBed;
+      print("oke");
+      // final items = jsonDecode(response.body).cast<Map<String, dynamic>>();
+      //
+      final bed = Bed.fromJson(jsonDecode(response.body));
+      print('data ${bed.data?.length.toString()}');
+      print(bed);
+      return bed.data;
+
+      // List<Data> listBed = items.map<Data>((json) {
+      //   return Bed.fromJson(json);
+      // }).toList();
+      // print(listBed);
+      // return listBed;
     } else {
       return [];
     }
